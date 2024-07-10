@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Rotten Tomatoes - Movie Review Analyser</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.0/dist/full.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body>
+        <div class="hero h-22 bg-base-240 ">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                <h1 class="text-5xl font-bold">Rotten Tomatoes Reviews</h1>
+                <p class="py-6">Sentiment Analyser for the reviews of the movie you wish to watch</p>
+                <form action="" method="post">
+                    <input type="text" class="input input-bordered input-info w-full max-w-xs px-8" id="url" name="url" placeholder="Paste the url here">
+                    <button class="btn btn-outline btn-info">Analyse</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        
+        {% if df %}
+          <div>
+              <div class="grid grid-flow-col justify-stretch text-center py-10">
+                  <div><img src="{{ url_for('static',filename='images/pie_chart.jpg')}}" alt="Sentiment distribution"></div>
+                  <div>Out of this much reviews:<br> 1. 53% are positive<br> 2. 27% are neutral<br> 3. 20% are negative</div>
+              </div>
+              <div class="grid grid-flow-col justify-between text-center py-10">
+                  <div style="word-wrap: break-word;">Word cloud gives a bit of information of what viewers think about the movie. Larger the font size of word, the frequency of the word used is high in reviews.</div>
+                  <div><img src="{{ url_for('static',filename='images/wordcloud.jpg')}}" alt="Word cloud"></div>
+              </div>
+              <section class="important-reviews">
+                  <div class="collapse collapse-arrow bg-base-200">
+                      <input type="radio" name="my-accordion-2" checked="checked" /> 
+                      <div class="collapse-title text-xl font-medium">
+                        Top 5 Positive Reviews
+                      </div>
+                      <div class="collapse-content"> 
+                        <ol>
+                          {% for i in range(0, 5) %}
+                            <li> {{ i+1 }}. {{ positive[i] }}</li>
+                          {% endfor %}
+                        </ol>
+                      </div>
+                    </div>
+                    <div class="collapse collapse-arrow bg-base-200">
+                      <input type="radio" name="my-accordion-2" /> 
+                      <div class="collapse-title text-xl font-medium">
+                        Top 5 neutral reviews
+                      </div>
+                      <div class="collapse-content"> 
+                        <ol>
+                          {% for i in range(0, 5) %}
+                            <li> {{ i+1 }}. {{ neutral[i] }}</li>
+                          {% endfor %}
+                        </ol>
+                      </div>
+                    </div>
+                    <div class="collapse collapse-arrow bg-base-200">
+                      <input type="radio" name="my-accordion-2" /> 
+                      <div class="collapse-title text-xl font-medium">
+                        Top 5 negative Reviews
+                      </div>
+                      <div class="collapse-content"> 
+                        <ol>
+                          {% for i in range(0, 5) %}
+                            <li>{{ negative[i] }}</li>
+                          {% endfor %}
+                        </ol>
+                      </div>
+                    </div>
+                </section>
+            </div>
+          {% endif %}
+    </body>
+</html>
