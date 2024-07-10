@@ -35,7 +35,7 @@ This Flask-based web application allows users to analyze movie critic reviews fr
 1. **Clone the Repository**:
     ```sh
     git clone https://github.com/Abekaesh/Movie-review-sentiment-analysis-web-application.git
-    cd moviereview-sentiment-analysis
+    cd Movie-review-sentiment-analysis-web-application
     ```
 
 2. **Install Dependencies**:
