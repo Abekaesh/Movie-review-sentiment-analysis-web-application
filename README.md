@@ -29,6 +29,7 @@ This Flask-based web application allows users to analyze movie critic reviews fr
 - **Matplotlib**
 - **WordCloud**
 - **NLTK**
+- **Pandas**
 
 ## Installation
 
